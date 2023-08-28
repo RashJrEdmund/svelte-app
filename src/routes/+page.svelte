@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Card from "../components/TodoComponents/Index.svelte";
+    import Card from "../components/TodoComponents/Card.svelte";
     import type { TasksType } from "../utils/types/cardTypes";
     import Task from "../utils/classes/TaskPrint";
 
@@ -21,15 +21,47 @@
         },
     ];
 
+    let error: { show: boolean; message: string } = {
+        show: false,
+        message: "",
+    };
+
     let taskName: string = "";
 
+    const handleInput = () => {
+        if (error.show && taskName.trim()) error = { show: false, message: "" };
+    };
+
     const handleSubmit = () => {
-        if (!taskName.trim()) return;
+        if (!taskName.trim()) {
+            error = { show: true, message: "You must add a todo" };
+            return;
+        }
 
         const newTask = new Task(taskName);
         tasksArray = [...tasksArray, newTask];
+        taskName = ""; // clearing the input field
     };
 
+    const handleDelete = (e: CustomEvent): void => {
+        const {
+            detail: { id: taskId },
+        } = e;
+
+        tasksArray = [...tasksArray.filter(({ id }) => id !== taskId)];
+    };
+
+    const handleDone = (e: CustomEvent): void => {
+        const {
+            detail: { id: taskId },
+        } = e;
+
+        tasksArray = tasksArray.map((task: TasksType) => {
+            if (task.id === taskId)
+                return { ...task, completed: !task.completed };
+            return task;
+        });
+    };
 </script>
 
 <main>
@@ -42,6 +74,7 @@
             placeholder="Add to do"
             class="text-slate-900 h-[40px] w-full rounded p-[5px]"
             bind:value={taskName}
+            on:input={handleInput}
         />
 
         <button
@@ -52,7 +85,14 @@
         </button>
     </form>
 
+    {#if error.show}
+        <p class="w-full text-white p-2 text-left font-medium">
+            Warning:
+            <span class="text-orange-600 font-normal"> {error.message}</span>
+        </p>
+    {/if}
+
     <div class="flex items-start flex-col flex-wrap p-[10px]">
-        <Card {tasksArray} />
+        <Card {tasksArray} on:delete={handleDelete} on:done={handleDone} />
     </div>
 </main>

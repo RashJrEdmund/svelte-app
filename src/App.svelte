@@ -7,7 +7,14 @@
 </script>
 
 <TailwindCss />
-<main class="min-w-[220px] max-w-[600px] bg-slate-800 mx-auto">
-  <Counter />
+<main class="container min-w-[220px] bg-slate-800 mx-auto p-[20px_0] rounded">
   <Todo />
+  <Counter />
 </main>
+
+<style>
+  .container {
+    width: min(97vw, 600px);
+    margin: 0 auto;
+  }
+</style>

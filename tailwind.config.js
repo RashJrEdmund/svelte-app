@@ -1,10 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   plugins: [],
-    theme: {
-    extend: {},
+  theme: {
+    extend: {
+      spacing: {
+        'width-40px': 'calc(100% - 70px)',
+      }
+    }
   },
-  purge: ["./index.html",'./src/**/*.{svelte,js,ts}'], // for unused CSS
+  purge: ["./index.html", './src/**/*.{svelte,js,ts}'], // for unused CSS
   variants: {
     extend: {},
   },
