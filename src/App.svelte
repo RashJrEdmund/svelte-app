@@ -7,7 +7,7 @@
 </script>
 
 <TailwindCss />
-<main class="min-w-[400px] max-w-[600px] bg-slate-800">
+<main class="min-w-[220px] max-w-[600px] bg-slate-800 mx-auto">
   <Counter />
   <Todo />
 </main>
