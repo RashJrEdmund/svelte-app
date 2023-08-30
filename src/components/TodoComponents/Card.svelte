@@ -25,7 +25,7 @@
         <p class="text-white bottom-0 left-0 mt-[15px]">
             status:
             <span class={completed ? "text-green-500" : "text-orange-500"}>
-                {completed ? "Completed" : "Pending"}
+                {completed ? "Completed ✅" : "Pending 👀"}
             </span>
         </p>
 
