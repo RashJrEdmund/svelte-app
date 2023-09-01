@@ -4,6 +4,8 @@
   import viteLogo from "/vite.svg";
   import Counter from "./components/Counter.svelte";
   import Todo from "./routes/+page.svelte";
+
+  const staticval: number = 2;
 </script>
 
 <TailwindCss />
