@@ -1,7 +1,7 @@
 <script lang="ts">
-    import Card from "../components/TodoComponents/Card.svelte";
-    import type { TasksType } from "../utils/types/cardTypes";
-    import Task from "../utils/classes/TaskPrint";
+    import Card from "../../components/TodoComponents/Card.svelte";
+    import type { TasksType } from "../../utils/types/cardTypes";
+    import Task from "../../utils/classes/TaskPrint";
 
     let tasksArray: TasksType[] = [
         {
@@ -92,7 +92,5 @@
         </p>
     {/if}
 
-    <div class="flex items-start flex-col flex-wrap p-[10px]">
-        <Card {tasksArray} on:delete={handleDelete} on:done={handleDone} />
-    </div>
+    <Card {tasksArray} on:delete={handleDelete} on:done={handleDone} />
 </main>
