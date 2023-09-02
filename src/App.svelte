@@ -2,7 +2,7 @@
   import TailwindCss from "./TailwindCSS.svelte";
   import svelteLogo from "./assets/svelte.svg";
   import viteLogo from "/vite.svg";
-  import Counter from "./components/Counter.svelte";
+  import Counter from "./components/Counter/index.svelte";
   import Todo from "./pages/todo/index.svelte";
   import Timer from "./pages/timer/+page.svelte";
 

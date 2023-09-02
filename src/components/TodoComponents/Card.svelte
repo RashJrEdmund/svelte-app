@@ -21,7 +21,7 @@
             </p>
 
             <Actions {id} on:delete on:done />
-            <!-- custom events that've been dispatched will propagate up-->
+            <!-- custom events that've been dispatched will propagate up if not made use of here.-->
         </div>
     {/each}
 </div>
