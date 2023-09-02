@@ -5,23 +5,29 @@
 </script>
 
 <div class="flex items-start flex-col flex-wrap p-[10px]">
-    {#each tasksArray as { id, name, completed } (id)}
-        <div
-            class="card flex flex-col items-start bg-[#321E1E] w-full h-fit min-h-[99px] mb-5 rounded p-[10px] relative drop-shadow-[0_0_4px_#000]"
-        >
-            <p class="w-width-40px text-left break-all h-width-40px">
-                {name}
-            </p>
+    {#if tasksArray.length > 0}
+        {#each tasksArray as { id, name, completed } (id)}
+            <div
+                class="card flex flex-col items-start bg-[#321E1E] w-full h-fit min-h-[99px] mb-5 rounded p-[10px] relative drop-shadow-[0_0_4px_#000]"
+            >
+                <p class="w-width-40px text-left break-all h-width-40px">
+                    {name}
+                </p>
 
-            <p class="text-white bottom-0 left-0 mt-[15px]">
-                status:
-                <span class={completed ? "text-green-500" : "text-orange-500"}>
-                    {completed ? "Completed ✅" : "Pending 👀"}
-                </span>
-            </p>
+                <p class="text-white bottom-0 left-0 mt-[15px]">
+                    status:
+                    <span
+                        class={completed ? "text-green-500" : "text-orange-500"}
+                    >
+                        {completed ? "Completed ✅" : "Pending 👀"}
+                    </span>
+                </p>
 
-            <Actions {id} on:delete on:done />
-            <!-- custom events that've been dispatched will propagate up if not made use of here.-->
-        </div>
-    {/each}
+                <Actions {id} on:delete on:done />
+                <!-- custom events that've been dispatched will propagate up if not made use of here.-->
+            </div>
+        {/each}
+    {:else}
+        <h1 class="w-full flex items-center justify-center min-h-[100px]">No tasks added</h1>
+    {/if}
 </div>

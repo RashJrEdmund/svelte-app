@@ -5,21 +5,12 @@
     import Form from "../../components/TodoComponents/Form.svelte";
 
     let tasksArray: TasksType[] = [
-        {
-            id: crypto.randomUUID(), // randomly generates a 36 letter long v4 UUID
-            name: "go to the gym",
-            completed: false,
-        },
-        {
-            id: crypto.randomUUID(),
-            name: "go to school early",
-            completed: false,
-        },
-        {
-            id: crypto.randomUUID(),
-            name: "Finish task",
-            completed: false,
-        },
+        // typicall look of a new todo
+        // {
+        //     id: crypto.randomUUID(), // randomly generates a 36 letter long v4 UUID
+        //     name: "go to the gym",
+        //     completed: false,
+        // },
     ];
 
     const handleSubmit = (e: CustomEvent) => {
@@ -52,8 +43,17 @@
     };
 </script>
 
-<main>
+<main
+    class="container min-w-[220px] bg-slate-800 mx-auto p-[20px_0] rounded min-h-[50vh]"
+>
     <Form on:submission={handleSubmit} />
 
     <Card {tasksArray} on:delete={handleDelete} on:done={handleDone} />
 </main>
+
+<style>
+    .container {
+        width: min(97vw, 600px);
+        margin: 0 auto;
+    }
+</style>
